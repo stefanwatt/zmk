@@ -17,27 +17,44 @@
 
 /{ 
     behaviors { 
-      hm: homerow_mods {     
+     hm: homerow_mods {     
         compatible = "zmk,behavior-hold-tap";
         label = "HOMEROW_MODS";
         #binding-cells = <2>;
-        tapping-term-ms = <150>;
+        tapping-term-ms = <250>;
+        quick-tap-ms = <0>;
+        flavor = "tap-preferred";
+        bindings = <&kp>, <&kp>;
+      };
+     hplt: hold_preferred-lt {     
+        compatible = "zmk,behavior-hold-tap";
+        label = "HOLD_PREFERRED_LT";
+        #binding-cells = <2>;
+        tapping-term-ms = <170>;
+        quick-tap-ms = <0>;
+        flavor = "hold-preferred";
+        bindings = <&mo>, <&kp>;
+      };
+     hms: homerow_mod_shift {     
+        compatible = "zmk,behavior-hold-tap";
+        label = "HOMEROW_MOD_SHIFT";
+        #binding-cells = <2>;
+        tapping-term-ms = <170>;
         quick-tap-ms = <0>;
         flavor = "tap-preferred";
         bindings = <&kp>, <&kp>;
       };
     };
-
     keymap {
         compatible = "zmk,keymap";
         default {
           bindings = <
             &kp Q       &kp D       &kp R       &kp W       &kp B                              &kp J       &kp F       &kp U       &kp P       &kp SEMI 
-            &hm LALT A  &hm LSHFT S &hm LGUI H  &hm LCTRL T &kp G                              &kp Y       &hm RCTRL N &hm LGUI E  &hm RSHFT O &hm LALT I
+            &hm LALT A  &hms LSHFT S &hm LGUI H  &hm LCTRL T &kp G                              &kp Y       &hm RCTRL N &hm LGUI E  &hms RSHFT O &hm LALT I
             &kp Z       &kp X       &kp M       &kp C       &kp V     &bt BT_NXT  &bt BT_PRV   &kp K       &kp L       &kp COMMA   &kp DOT     &kp FSLH
-                                    &kp DEL     &lt NAV ESC &mo FKEYS                          &mo FKEYS2  &lt NUM SPACE &kp BSPC    
+                                    &kp DEL     &hplt NAV ESC &mo FKEYS                          &mo FKEYS2  &lt NUM SPACE &kp BSPC    
             >;
-			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp F24 F24>;
+          sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp F24 F24>;
         };
 
         NAV {
@@ -56,7 +73,6 @@
             &kp N0   &kp N1   &kp N2   &kp N3   &none     &none          &none     &none       &kp L       &kp COMMA   &kp DOT     &kp FSLH
                                     &none       &kp RET       &kp RET                            &none       &none       &none
             >;
-			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
         FKEYS {
@@ -66,8 +82,6 @@
             &none       &none       &none       &none       &none     &none          &none     &none       &none       &none       &none       &none   
                                     &none       &none       &none                              &none       &none       &none
             >;
-
-			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
         FKEYS2 {
@@ -77,9 +91,8 @@
             &none       &none       &none       &none       &none     &none          &none     &none       &none       &none       &none       &none   
                                     &none       &none       &none                              &none       &none       &none
             >;
-
-			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
     };
 };
+
