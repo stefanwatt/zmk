@@ -31,7 +31,7 @@
         compatible = "zmk,behavior-hold-tap";
         label = "HOLD_PREFERRED_LT";
         #binding-cells = <2>;
-        tapping-term-ms = <170>;
+        tapping-term-ms = <195>;
         quick-tap-ms = <0>;
         flavor = "hold-preferred";
         bindings = <&mo>, <&kp>;
@@ -40,9 +40,9 @@
         compatible = "zmk,behavior-hold-tap";
         label = "HOMEROW_MOD_SHIFT";
         #binding-cells = <2>;
-        tapping-term-ms = <195>;
+        tapping-term-ms = <170>;
         quick-tap-ms = <0>;
-        flavor = "tap-preferred";
+        flavor = "balanced";
         bindings = <&kp>, <&kp>;
       };
     };
@@ -51,8 +51,8 @@
         default {
           bindings = <
             &kp Q       &kp D       &kp R       &kp W       &kp B                              &kp J       &kp F       &kp U       &kp P       &kp SEMI 
-            &hm LALT A  &hms LSHFT S &hm LGUI H  &hm LCTRL T &kp G                              &kp Y       &hm RCTRL N &hm LGUI E  &hms RSHFT O &hm LALT I
-            &kp Z       &kp X       &kp M       &kp C       &kp V     &bt BT_NXT  &bt BT_PRV   &kp K       &kp L       &kp COMMA   &kp DOT     &kp FSLH
+            &hm LALT A  &hms LSHFT S &hm LGUI H  &hm LCTRL T &kp G                             &kp Y       &hm RCTRL N &hm LGUI E  &hms RSHFT O &hm LALT I
+            &kp Z       &kp X       &kp M       &kp C       &kp V  &bt BT_SEL 0  &bt BT_SEL 1  &kp K       &kp L       &kp COMMA   &kp DOT     &kp FSLH
                               &hplt FKEYS DEL &hplt NAV ESC &kp X                              &mo FKEYS2  &lt NUM SPACE &kp BSPC    
             >;
           sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp F24 F24>;
@@ -71,7 +71,7 @@
            bindings = <
             &none       &kp N7   &kp N8   &kp N9   &none                              &none       &kp AT      &kp HASH    &kp TILDE   &none    
             &none       &kp N4   &kp N5   &kp N6   &none                              &none       &kp PLUS    &kp MINUS   &kp STAR    &kp PRCNT  
-            &kp N0   &kp N1   &kp N2   &kp N3   &none     &none          &to GAME     &none       &kp L       &kp COMMA   &kp DOT     &kp FSLH
+            &kp N0   &kp N1   &kp N2   &kp N3   &none     &none          &bt BT_PRV   &bt BT_NXT       &kp L       &kp COMMA   &kp DOT     &kp FSLH
                                     &none       &kp RET       &kp RET                            &none       &none       &none
             >;
         };
@@ -96,13 +96,14 @@
 
         GAME {
            bindings = <
-            &kp N1      &kp N2      &kp N3      &kp N4      &kp B                              &none       &none       &kp F15     &none       &none    
-            &kp Q       &kp W       &kp E       &kp R       &kp G                              &none       &none       &none       &kp F14     &none     
+            &kp N1      &kp N2      &kp N3      &kp LCTRL   &kp B                              &none       &none       &kp F15     &none       &none    
+            &kp Q       &kp W       &kp E       &kp R       &kp ESC                              &none       &none       &none       &kp F14     &none     
             &kp TAB     &kp S       &kp D       &kp F       &kp V     &tog GAME          &none     &none       &none       &none       &none       &none   
-                                    &kp LSHFT   &hm LCTRL ESC &kp LALT                           &none       &none       &none
+                                    &kp LALT    &kp SPACE   &kp LCTRL                           &none       &none       &none
             >;
         };
 
     };
 };
+
 
