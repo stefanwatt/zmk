@@ -14,6 +14,7 @@
 #define NUM 2
 #define FKEYS 3
 #define FKEYS2 4
+#define GAME 5
 
 /{ 
     behaviors { 
@@ -39,7 +40,7 @@
         compatible = "zmk,behavior-hold-tap";
         label = "HOMEROW_MOD_SHIFT";
         #binding-cells = <2>;
-        tapping-term-ms = <170>;
+        tapping-term-ms = <195>;
         quick-tap-ms = <0>;
         flavor = "tap-preferred";
         bindings = <&kp>, <&kp>;
@@ -52,7 +53,7 @@
             &kp Q       &kp D       &kp R       &kp W       &kp B                              &kp J       &kp F       &kp U       &kp P       &kp SEMI 
             &hm LALT A  &hms LSHFT S &hm LGUI H  &hm LCTRL T &kp G                              &kp Y       &hm RCTRL N &hm LGUI E  &hms RSHFT O &hm LALT I
             &kp Z       &kp X       &kp M       &kp C       &kp V     &bt BT_NXT  &bt BT_PRV   &kp K       &kp L       &kp COMMA   &kp DOT     &kp FSLH
-                                    &kp DEL     &hplt NAV ESC &mo FKEYS                          &mo FKEYS2  &lt NUM SPACE &kp BSPC    
+                              &hplt FKEYS DEL &hplt NAV ESC &kp X                              &mo FKEYS2  &lt NUM SPACE &kp BSPC    
             >;
           sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp F24 F24>;
         };
@@ -61,7 +62,7 @@
            bindings = <
             &none       &none       &kp UP      &none       &none                              &none       &kp LBKT    &kp RBKT    &kp SQT     &kp GRAVE 
             &kp TAB     &kp LEFT    &kp DOWN    &kp RIGHT   &kp G                              &none       &kp GT      &kp EQUAL   &kp RPAR    &kp LPAR  
-            &kp CARET   &kp DLLR    &kp LBRC    &kp RBRC    &none     &none       &bt BT_CLR   &none       &kp AMPS    &kp EXCL    &kp PIPE    &kp BSLH
+            &kp CARET   &kp DLLR    &kp LBRC    &kp RBRC    &none     &tog GAME   &bt BT_CLR   &none       &kp AMPS    &kp EXCL    &kp PIPE    &kp BSLH
                                     &none       &none       &none                              &none       &none       &none
             >;
         };
@@ -70,7 +71,7 @@
            bindings = <
             &none       &kp N7   &kp N8   &kp N9   &none                              &none       &kp AT      &kp HASH    &kp TILDE   &none    
             &none       &kp N4   &kp N5   &kp N6   &none                              &none       &kp PLUS    &kp MINUS   &kp STAR    &kp PRCNT  
-            &kp N0   &kp N1   &kp N2   &kp N3   &none     &none          &none     &none       &kp L       &kp COMMA   &kp DOT     &kp FSLH
+            &kp N0   &kp N1   &kp N2   &kp N3   &none     &none          &to GAME     &none       &kp L       &kp COMMA   &kp DOT     &kp FSLH
                                     &none       &kp RET       &kp RET                            &none       &none       &none
             >;
         };
@@ -90,6 +91,15 @@
             &kp F13     &kp F16     &none       &none       &none                              &none       &none       &none       &kp F14     &none     
             &none       &none       &none       &none       &none     &none          &none     &none       &none       &none       &none       &none   
                                     &none       &none       &none                              &none       &none       &none
+            >;
+        };
+
+        GAME {
+           bindings = <
+            &kp N1      &kp N2      &kp N3      &kp N4      &kp B                              &none       &none       &kp F15     &none       &none    
+            &kp Q       &kp W       &kp E       &kp R       &kp G                              &none       &none       &none       &kp F14     &none     
+            &kp TAB     &kp S       &kp D       &kp F       &kp V     &tog GAME          &none     &none       &none       &none       &none       &none   
+                                    &kp LSHFT   &hm LCTRL ESC &kp LALT                           &none       &none       &none
             >;
         };
 
